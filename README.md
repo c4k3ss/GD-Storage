@@ -23,12 +23,14 @@ GD Storage lets you hide any file inside a Geometry Dash level by encoding the f
 Requires Python 3.10+
 
 ```bash
-pip install .
+pip install gd-storage
 ```
 
 Or install in development mode:
 
 ```bash
+git clone https://github.com/c4k3ss/GD-Storage
+cd GD-Storage
 pip install -e .
 ```
 
