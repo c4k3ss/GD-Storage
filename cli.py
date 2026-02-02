@@ -148,6 +148,23 @@ def save_decoded_file(filename: str, data: bytes) -> Path | None:
     return downloads
 
 
+def make_description(filename: str, file_size: int, max_len: int = 180) -> str:
+    """Build level description, truncating filename if needed to fit limit."""
+    prefix = "github.com/c4k3ss/GD-Storage | "
+    suffix = f" ({file_size:,} bytes)"
+
+    # Calculate max filename length
+    max_name_len = max_len - len(prefix) - len(suffix)
+
+    if len(filename) > max_name_len:
+        # Truncate filename, keep extension visible
+        name_part = filename[:max_name_len - 3] + "..."
+    else:
+        name_part = filename
+
+    return f"{prefix}{name_part}{suffix}"
+
+
 def show_help():
     print("GD Storage - Encode files into Geometry Dash levels")
     print()
@@ -179,7 +196,7 @@ def cmd_upload(filepath: Path, encode_func):
 
     obj_count = raw_level.count(';')
     level_name = filepath.stem[:20]
-    description = f"Encoded: {filepath.name}"
+    description = make_description(filepath.name, filepath.stat().st_size)
     desc_encoded = base64.urlsafe_b64encode(description.encode()).decode()
 
     class UploadLevel:
@@ -275,7 +292,8 @@ def cmd_encode(filepath: Path, encode_func):
         print(f"Error: {e}")
         return 1
 
-    manager.injectLevel(level_str, filepath.stem, f"Encoded: {filepath.name}")
+    description = make_description(filepath.name, filepath.stat().st_size)
+    manager.injectLevel(level_str, filepath.stem, description)
     manager.save(ccll=True, ccgm=False)
     print(f"Injected as '{filepath.stem}'")
     return 0
