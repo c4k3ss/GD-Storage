@@ -102,7 +102,7 @@ Config is saved to `~/.config/gd-storage/config.json`
 
 ## Acknowledgments
 
-Save file handling is based on a modified version of [PyCCGameManager](https://github.com/sSolsta/PyCCGameManager).
+Save file handling is based on a modified version of [PyCCGameManager](https://github.com/camila314/PyCCGameManager).
 
 ## License
 
