@@ -1,0 +1,45 @@
+[project]
+name = "gd-storage"
+version = "1.0.0"
+description = "Encode files into Geometry Dash levels"
+readme = "README.md"
+license = {text = "MIT"}
+requires-python = ">=3.10"
+authors = [
+    {name = "c4k3ss", email = "iustin@mail.c4k3ss.dev"}
+]
+keywords = ["geometry-dash", "gd", "encoding", "steganography", "cli"]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Environment :: Console",
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
+    "Topic :: Games/Entertainment",
+    "Topic :: Utilities",
+]
+dependencies = [
+    "dashlib",
+    "pycryptodomex",
+]
+
+[project.urls]
+Homepage = "https://github.com/c4k3ss/gd-storage"
+Repository = "https://github.com/c4k3ss/gd-storage"
+Issues = "https://github.com/c4k3ss/gd-storage/issues"
+
+[tool.setuptools]
+py-modules = ["cli", "gd_api", "save_manager"]
+packages = ["methods"]
+
+[project.scripts]
+gd-storage = "cli:main"
+
+[build-system]
+requires = ["setuptools"]
+build-backend = "setuptools.build_meta"
