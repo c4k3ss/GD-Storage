@@ -28,9 +28,9 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/c4k3ss/gd-storage"
-Repository = "https://github.com/c4k3ss/gd-storage"
-Issues = "https://github.com/c4k3ss/gd-storage/issues"
+Homepage = "https://github.com/c4k3ss/GD-Storage"
+Repository = "https://github.com/c4k3ss/GD-Storage"
+Issues = "https://github.com/c4k3ss/GD-Storage/issues"
 
 [tool.setuptools]
 py-modules = ["cli", "gd_api", "save_manager"]
