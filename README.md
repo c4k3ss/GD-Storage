@@ -96,7 +96,9 @@ Config is saved to `~/.config/gd-storage/config.json`
 ## Dependencies
 
 - [dashlib](https://pypi.org/project/dashlib/) - GD server API
+- [gdparse](https://pypi.org/project/gdparse/) - GD level string parsing
 - [pycryptodomex](https://pypi.org/project/pycryptodomex/) - AES encryption for macOS saves
+- [zstandard](https://pypi.org/project/zstandard/) - Zstandard compression
 
 ## License
 
