@@ -100,6 +100,10 @@ Config is saved to `~/.config/gd-storage/config.json`
 - [pycryptodomex](https://pypi.org/project/pycryptodomex/) - AES encryption for macOS saves
 - [zstandard](https://pypi.org/project/zstandard/) - Zstandard compression
 
+## Acknowledgments
+
+Save file handling is based on a modified version of [PyCCGameManager](https://github.com/sSolsta/PyCCGameManager).
+
 ## License
 
 GD Storage is licensed under the MIT License
