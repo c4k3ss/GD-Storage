@@ -60,13 +60,13 @@ Files are encoded using a base-9999 group encoding method:
 1. **Compression** - The file is gzip compressed with the filename prepended
 2. **Chunking** - Binary data is split into 8-byte chunks
 3. **Base Conversion** - Each chunk is converted to 5 base-9999 numbers (1-9999)
-4. **Object Encoding** - Numbers are stored in GD object group properties (property 57)
+4. **Object Encoding** - Numbers are stored in GD object group properties
 5. **Level String** - Objects are serialized into a valid GD level string
 
 
 ### Why Base-9999?
 
-GD supports up to 9999 groups per object. By treating group numbers as digits in a base-9999 number system, we can efficiently pack 8 bytes into just 5 group values, achieving ~62.5% space efficiency.
+GD supports 10 groups  per object (1-9999). By treating group numbers as digits in a base-9999 number system, we can efficiently pack 8 bytes into just 5 group values, achieving ~62.5% space efficiency.
 
 ## Configuration
 
@@ -113,4 +113,5 @@ GD Storage is licensed under the MIT License
 This project is for educational purposes. Use responsibly and don't abuse GD's servers.
 
 > GitHub [@c4k3ss](https://github.com/c4k3ss) &nbsp;&middot;&nbsp;
-> Twitter [@_c4k3ss](https://x.com/_c4k3ss)
+> Twitter [@_c4k3ss](https://x.com/_c4k3ss) &nbsp;&middot;&nbsp;
+> Bluesky [@c4k3ss](https://bsky.app/profile/c4k3ss.bsky.social)
