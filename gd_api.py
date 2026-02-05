@@ -161,7 +161,7 @@ def upload_level(
         "seed2": generate_seed2(level_encoded),
         "secret": SECRET,
         "gameVersion": 22,
-        "binaryVersion": 44,
+        "binaryVersion": 42,
         "gdw": 0,
     }).encode()
 
@@ -208,38 +208,58 @@ def generate_seed2(level_string: str) -> str:
     return base64.urlsafe_b64encode(xored.encode()).decode()
 
 
-def get_account_id(username: str, password: str) -> tuple[int, str]:
+def lookup_account_id(username: str) -> int:
     """
-    Login and get account ID.
-    Returns (account_id, gjp2) for use in subsequent requests.
+    Look up account ID by username using the getGJUsers endpoint.
     """
-    # Login uses a different secret than other endpoints
-    login_secret = "Wmfv3899gc9"
-
     data = urllib.parse.urlencode({
-        "userName": username,
-        "password": password,  # Raw password for login
-        "secret": login_secret,
-        "udid": "S15232137420643451451521515121125115195140311",
+        "str": username,
+        "secret": SECRET,
         "gameVersion": 22,
         "binaryVersion": 42,
     }).encode()
 
-    req = urllib.request.Request(f"{GD_URL}/accounts/loginGJAccount.php", data=data)
+    req = urllib.request.Request(f"{GD_URL}/getGJUsers20.php", data=data)
     req.add_header("User-Agent", "")
     req.add_header("Content-Type", "application/x-www-form-urlencoded")
 
     with urllib.request.urlopen(req, timeout=30) as response:
         result = response.read().decode()
 
-    if result == "-1" or result.startswith("-"):
-        raise ValueError(f"Login failed (error: {result})")
+    if result == "-1" or not result.strip():
+        raise ValueError(f"User '{username}' not found")
 
-    # Returns accountID,userID
-    parts = result.split(",")
-    account_id = int(parts[0])
+    # Parse response - format is key:value:key:value
+    # Key 16 is accountID, key 1 is username
+    parts = result.split("#")[0].split(":")
+    user_data = {}
+    for i in range(0, len(parts) - 1, 2):
+        user_data[parts[i]] = parts[i + 1]
 
-    # Generate GJP2 for subsequent requests
-    gjp2 = gjp2_encode(password)
+    # Verify we found the exact username (search can return partial matches)
+    found_username = user_data.get("1", "")
+    if found_username.lower() != username.lower():
+        raise ValueError(f"User '{username}' not found (got '{found_username}')")
+
+    account_id = int(user_data.get("16", 0))
+    if account_id == 0:
+        raise ValueError(f"Could not get account ID for '{username}'")
+
+    return account_id
+
+
+def get_account_id(username: str, password: str) -> tuple[int, str]:
+    """
+    Get account ID by looking up username, generate gjp2 from password.
+    Authentication happens at upload time.
+    """
+    from dashlib import generate_gjp2
+
+    print(f"Looking up account ID for: {username}")
+    account_id = lookup_account_id(username)
+    print(f"Found account ID: {account_id}")
+
+    # Generate GJP2 from password
+    gjp2 = generate_gjp2(password)
 
     return account_id, gjp2
