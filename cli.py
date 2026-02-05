@@ -1,6 +1,3 @@
-"""
-GD Storage - Encode files into Geometry Dash levels
-"""
 import argparse
 import sys
 import os

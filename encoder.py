@@ -1,19 +1,9 @@
 """
-GD Storage - Encode files into Geometry Dash levels
-
 Usage:
-  Encode: python encoder.py <filepath> [--method N]
-  Decode: python encoder.py --decode <levelname> [--method N]
-  Fetch:  python encoder.py --fetch <level_id> [--method N]
-  Upload: python encoder.py --upload <filepath> [--method N]
-
-Methods:
-  1 - X/Y Coordinates (unoptimized)
-  2 - Raw Groups (1GB levels, crashes on close)
-  3 - Base 10000 (slow)
-  4 - Base64 Groups (stripped by GD)
-  5 - Property 31 (doesn't work)
-  6 - Optimized Base 9999 (default, best)
+  Encode: gd-storage --encode <filepath>
+  Decode: gd-storage --encode <levelname>
+  Fetch:  gd-storage --fetch <level_id>
+  Upload: gd-storage --upload <filepath>
 """
 from pathlib import Path
 from methods import METHODS, DEFAULT_METHOD

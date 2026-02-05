@@ -1,9 +1,5 @@
 """
-GD Save Manager - Fixed version of PyCCManager
-
-Handles reading/writing Geometry Dash save files on Windows and macOS.
-
-Fixes self reference error
+Fixed version of PyCCManager
 """
 import os
 import zlib
