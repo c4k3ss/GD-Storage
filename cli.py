@@ -346,7 +346,7 @@ def get_credentials():
         if saved_user and saved_id and saved_gjp2:
             print(f"Using saved credentials: {saved_user.group(1)}")
             return saved_user.group(1), int(saved_id.group(1)), saved_gjp2.group(1)
-    except ValueError:
+    except (ValueError, FileNotFoundError, OSError):
         pass  # No local save, prompt for credentials
 
     print("Enter GD credentials:")
