@@ -1,22 +1,31 @@
-# GD Storage
+<h1 align="center">
+  <br>
+  <a href="https://github.com/c4k3ss/GD-Storage"><img src="gd-storage.png" alt="GD Storage" width="200"></a>
+  <br>
+  GD Storage
+  <br>
+</h1>
 
+<h4 align="center">Hide any file inside a Geometry Dash level</h4>
 
-
-## What is this?
-
-GD Storage lets you hide any file inside a Geometry Dash level by encoding the file's binary data into level object properties. The encoded level can be:
-- Saved to your local GD save file
-- Uploaded to GD servers and shared via level ID
-- Downloaded and decoded back to the original file
+<p align="center">
+  <a href="#features">Features</a> •
+  <a href="#installation">Installation</a> •
+  <a href="#usage">Usage</a> •
+  <a href="#how-it-works">How It Works</a> •
+  <a href="#configuration">Configuration</a> •
+  <a href="#acknowledgments">Acknowledgments</a> •
+  <a href="#license">License</a>
+</p>
 
 ## Features
 
-- **Upload to GD Servers** - Store files on RobTop's servers, get a level ID to share
-- **Fetch from GD Servers** - Download and decode files using just a level ID
-- **Local Save Support** - Inject encoded levels directly into your GD save file
-- **Cross-Platform** - Works on Windows, macOS, and Linux (via Proton)
-- **Configurable** - Custom GD save paths for non-standard installations
-- **Secure** - Path traversal protection, input validation, overwrite confirmation
+* **Upload to GD Servers** - Store files on RobTop's servers, get a level ID to share
+* **Fetch from GD Servers** - Download and decode files using just a level ID
+* **Local Save Support** - Inject encoded levels directly into your GD save file
+* **Cross-Platform** - Works on Windows, macOS, and Linux (via Proton)
+* **Configurable** - Custom GD save paths for non-standard installations
+* **Secure** - Path traversal protection, input validation, overwrite confirmation
 
 ## Installation
 
@@ -63,7 +72,6 @@ Files are encoded using a base-9999 group encoding method:
 4. **Object Encoding** - Numbers are stored in GD object group properties
 5. **Level String** - Objects are serialized into a valid GD level string
 
-
 ### Why Base-9999?
 
 GD supports 10 groups  per object (1-9999). By treating group numbers as digits in a base-9999 number system, we can efficiently pack 8 bytes into just 5 group values, achieving ~62.5% space efficiency.
@@ -92,7 +100,6 @@ Config is saved to `~/.config/gd-storage/config.json`
 
 *Linux requires configuring the Proton GD save path manually
 
-
 ## Dependencies
 
 - [dashlib](https://pypi.org/project/dashlib/) - GD server API
@@ -112,6 +119,7 @@ GD Storage is licensed under the MIT License
 
 This project is for educational purposes. Use responsibly and don't abuse GD's servers.
 
+---
 > GitHub [@c4k3ss](https://github.com/c4k3ss) &nbsp;&middot;&nbsp;
 > Twitter [@_c4k3ss](https://x.com/_c4k3ss) &nbsp;&middot;&nbsp;
 > Bluesky [@c4k3ss](https://bsky.app/profile/c4k3ss.bsky.social)
