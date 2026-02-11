@@ -1,6 +1,6 @@
 [project]
 name = "gd-storage"
-version = "1.0.8"
+version = "1.0.9"
 description = "Encode files into Geometry Dash levels"
 readme = "README.md"
 license = "MIT"
