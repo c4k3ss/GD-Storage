@@ -1,6 +1,6 @@
 <h1 align="center">
   <br>
-  <a href="https://github.com/c4k3ss/GD-Storage"><img src="gd-storage.png" alt="GD Storage" width="200"></a>
+  <a href="https://github.com/c4k3ss/GD-Storage"><img src="gd-storage.png" alt="Github" width="200"></a>
   <br>
   GD Storage
   <br>
